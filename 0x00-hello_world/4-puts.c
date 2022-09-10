@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
- *  Main Body
+ *  main - Main Body
+ *  Return: 0
  */
 int main(void)
 {
