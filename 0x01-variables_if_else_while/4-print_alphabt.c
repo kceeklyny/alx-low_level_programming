@@ -11,9 +11,8 @@
 int main(void)
 {
 	char  alphab;
-	
-	e='e';
-	q='q';
+	char e ='e';
+	char q ='q';
 
 	for ( alphab = 'a';  alphab <= 'z';  alphab++)
 	{
