@@ -11,10 +11,10 @@
 int main(void)
 {
 	char  alphab;
-	char e ='e';
-	char q ='q';
+	char e = 'e';
+	char q = 'q';
 
-	for ( alphab = 'a';  alphab <= 'z';  alphab++)
+	for (alphab = 'a';  alphab <= 'z';  alphab++)
 	{
 		if (alphab != e && alphab != q)
 			putchar(alphab);
