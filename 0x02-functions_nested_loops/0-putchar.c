@@ -1,14 +1,20 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: 0
+*main - function prints text as output
+*
+*Return:return 0
 */
-
 int main(void)
 {
-	putchar('_putchar');
-	putchar('\n');
+	char sch[10] = "_putchar";
+
+	int i;
+
+	for (i = 0; i < 8; i++)
+	{
+		_putchar(sch[i]);
+	}
+	_putchar(10);
 	return (0);
 }
