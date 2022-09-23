@@ -31,7 +31,7 @@ int _bigger(int a, int b)
 	if (a <= b)
 		return (b);
 	else
-		return(a);
+		return (a);
 }
 
 /**
@@ -82,27 +82,27 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	taille_n1 = _strlen(n1);
 	taille_n2 = _strlen(n2);
-	
+
 	if (taille_n1 >= taille_n2)
 	{
 		bigger_ch = n1;
 		smaller_ch = n2;
 	}
-	else 
+	else
 	{
 		bigger_ch = n2;
 		smaller_ch = n1;
 	}
-	
+
 	if (size_r < _bigger(taille_n1, taille_n2))
 		return (0);
 	else
 	{
 		rev_string(bigger_ch);
 		rev_string(smaller_ch);
-		while(bigger_ch[j])
+		while (bigger_ch[j])
 		{
-			if(smaller_ch[i])
+			if (smaller_ch[i])
 			{
 				r[i] = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
 				ret = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) / 10) + '0';
