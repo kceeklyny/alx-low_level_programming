@@ -1,24 +1,46 @@
-#include "main.h"
+#include<stdio.h>
 
 /**
- * rot13 - rotate characters 13 places in the alphabet
- * @s: string
- * Return: string `s` rotated
+ * remplace13 - a function ...
+ * @b: char
+ *
+ * Return: char
  */
 
-char *rot13(char *s)
+char remplace13(char b)
 {
-	int i;
-	char storeh[] = "NOPQRSTUVWXYZABCDEFGHIJKLM";
-	char storel[] = "nopqrstuvwxyzabcdefghijklm";
-
-	for (i = 0; s[i] != '\0'; i++)
+	/*ASCII 65 is A and 90 is Z*/
+	if ((b > 64) && (b < 91))
 	{
-		if ((s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123))
-		{
-			s[i] = (s[i] - 65 > 25) ?
-				storel[s[i] - 97] : storeh[s[i] - 65];
-		}
+		b = ((b - 65 + 13) % 26) + 65;
 	}
-	return (s);
+
+	/*ASCII 97 is a and 122 is z*/
+	if ((b > 96) && (b < 123))
+	{
+		b = ((b - 97 + 13) % 26) + 97;
+	}
+
+	return (b);
+}
+
+/**
+ * rot13 - a function ...
+ * @str: the chaine of caractere
+ *
+ * Return: str
+ */
+
+char	*rot13(char *str)
+{
+	int i = 0;
+	/*char alp[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";*/
+	/*char cde[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";*/
+
+	while (str[i])
+	{
+		str[i] = remplace13(str[i]);
+		i++;
+	}
+	return (str);
 }
