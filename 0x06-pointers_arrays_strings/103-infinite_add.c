@@ -1,74 +1,124 @@
 #include "main.h"
 
 /**
- * _atoi - Frist Func
- * @s: char
- * Return: Sign*Resp
+ * _strlen - a function that takes a pointer to an int as parameter and
+ * updates the value it points to to 98
+ * @s: chaine of caractere
+ *
+ * Return: 1 or 0
  */
 
-int _atoi(char *s)
+int _strlen(char *s)
 {
-	int sign = 1, resp = 0, firstNum;
+	int i = 0;
 
-	for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
-	{
-		if (s[firstNum] == '-')
-		{
-			sign *= -1;
-		}
-	}
-
-	for (int i = firstNum; s[i] >= 48 && s[i] <= 57; i++)
-	{
-		resp *= 10;
-		resp += (s[i] - 48);
-	}
-
-	return (sign * resp);
+	while (s[i])
+		i++;
+	return (i);
 }
 
 /**
- * int_to_string - converts interger to string
- * @n: int
+ * _bigger - a function that takes a pointer to an int as parameter and
+ * updates the value it points to to 98
+ * @a: chaine of caractere
+ * @b: chaine of caractere
+ *
+ * Return: the bigger of a and b
  */
 
-void int_to_string(int n)
+int _bigger(int a, int b)
 {
-int divisor = 1, i, resp;
-
-
-for (i = 0; n / divisor > 9; i++)
-{
-	divisor *= 10;
-}
-
-char str[i];
-
-for (int cmpt = 0; divisor >= 10; divisor /= 10, cmpt++)
-{
-	resp = n / divisor;
-	str[cmpt] = '0' + resp;
-	n = n - resp * divisor;
-}
-str[i] = ('0' + n);
-
+	if (a <= b)
+		return (b);
+	else
+		return(a);
 }
 
 /**
- * *infinite_add - Thefunction that adds inifinite
- * @n1: char
- * @n2: char
- * @r: buffer
- * @size_r: size of r
- * Return: char
+ * rev_string - a function that takes a pointer to an int as parameter and
+ * @s: chaine of caractere
+ *
+ * Return: 1 or 0
  */
+
+void rev_string(char *s)
+{
+	int i = 0, taille, k;
+	char c;
+
+	while (s[i] != '\0')
+		i++;
+
+	i--;
+	taille = i;
+	k = i / 2;
+	i = 0;
+
+	while (i <= k)
+	{
+		c = s[i];
+		s[i] = s[taille];
+		s[taille] = c;
+		i++;
+		taille--;
+	}
+}
+
+
+/**
+  * infinite_add - print numbers chars
+  * @n1: the chaine of caractere
+  * @n2: the chaine of caractere
+  * @r: the chaine of caractere
+  * @size_r: the chaine of caractere
+  * Return: 0
+ **/
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int sum, a, b;
+	char *bigger_ch, *smaller_ch, ret = '0';
+	int taille_n1, taille_n2;
+	int i = 0, j = 0;
 
-	a = _atoi(n1);
-	b = _atoi(n2);
+	taille_n1 = _strlen(n1);
+	taille_n2 = _strlen(n2);
+	
+	if (taille_n1 >= taille_n2)
+	{
+		bigger_ch = n1;
+		smaller_ch = n2;
+	}
+	else 
+	{
+		bigger_ch = n2;
+		smaller_ch = n1;
+	}
+	
+	if (size_r < _bigger(taille_n1, taille_n2))
+		return (0);
+	else
+	{
+		rev_string(bigger_ch);
+		rev_string(smaller_ch);
+		while(bigger_ch[j])
+		{
+			if(smaller_ch[i])
+			{
+				r[i] = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
+				ret = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) / 10) + '0';
+			}
+			else
+			{
+				r[i] = (((bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
+				ret = (((bigger_ch[i] - '0') + ret) / 10);
+			}
 
-	sum = a + b;
+			i++;
+		}
+		rev_string(r);
+		rev_string(bigger_ch);
+		rev_string(smaller_ch);
+		return (r);
+
+	}
 }
