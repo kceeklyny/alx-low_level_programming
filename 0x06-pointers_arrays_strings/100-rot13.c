@@ -14,9 +14,8 @@ char remplace13(char b)
 	{
 		b = ((b - 65 + 13) % 26) + 65;
 	}
-
+	else
 	/*ASCII 97 is a and 122 is z*/
-	if ((b > 96) && (b < 123))
 	{
 		b = ((b - 97 + 13) % 26) + 97;
 	}
